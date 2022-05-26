@@ -1,8 +1,77 @@
 <!DOCTYPE html>
+
 <html>
   <body>
-    <h1>Hello I am Ryan</h1>
+    <h1>COPS AND ROBBER GAME</h1>
 
-    <p>Welcome to the game</p>
+    <label for="team">Choose a team:</label>
+
+    <select name="team" id="team">
+      <option value="1">Team 1</option>
+      <option value="2">Team 2</option>
+      <option value="3">Team 3</option>
+      <option value="4">Team 4</option>
+      <option value="5">Team 5</option>
+      <option value="6">Team 6</option>
+    </select>
+    <br />
+    <br />
+    <label for="code">Code:</label>
+    <input type="text" id="code_input" name="code" />
+
+    <button onclick="onClick()">Submit</button>
+
+    <h2 id="clue"></h2>
+    <script>
+      // key: team id
+      var clues = {
+        1: {
+          "1_sample_code1": "sample_clue1",
+          "1_sample_code2": "sample_clue2",
+          "1_sample_code3": "sample_clue3",
+        },
+        2: {
+          "2_sample_code1": "sample_clue1",
+          "2_sample_code2": "sample_clue2",
+          "2_sample_code3": "sample_clue3",
+        },
+        3: {
+          "2_sample_code1": "sample_clue1",
+          "2_sample_code2": "sample_clue2",
+          "2_sample_code3": "sample_clue3",
+        },
+        4: {
+          "2_sample_code1": "sample_clue1",
+          "2_sample_code2": "sample_clue2",
+          "2_sample_code3": "sample_clue3",
+        },
+        5: {
+          "2_sample_code1": "sample_clue1",
+          "2_sample_code2": "sample_clue2",
+          "2_sample_code3": "sample_clue3",
+        },
+        6: {
+          "6_sample_code1": "61",
+          "6_sample_code2": "62",
+          "6_sample_code3": "63",
+        },
+      };
+
+      function onClick() {
+        var submitted_code = document.getElementById("code_input").value;
+        var team_dropdown = document.getElementById("team");
+        var current_team =
+          team_dropdown.options[team_dropdown.selectedIndex].value;
+        var team_clues = clues[current_team];
+        if (submitted_code in team_clues) {
+          // if the code is right
+          document.getElementById("clue").innerHTML =
+            team_clues[submitted_code];
+        } else {
+          // if the code is wrongs
+          document.getElementById("clue").innerHTML = "freaking wrong dudeeee";
+        }
+      }
+    </script>
   </body>
 </html>
